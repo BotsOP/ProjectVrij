@@ -296,7 +296,6 @@ GameObject:
   - component: {fileID: 212035855}
   - component: {fileID: 212035854}
   - component: {fileID: 212035853}
-  - component: {fileID: 212035852}
   - component: {fileID: 212035856}
   m_Layer: 0
   m_Name: Plane
@@ -305,20 +304,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &212035852
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212035851}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &212035853
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -807,7 +792,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291338109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.25, y: 1.25, z: 11.12}
+  m_LocalPosition: {x: 0.31, y: 1.25, z: 6.66}
   m_LocalScale: {x: 3.2144268, y: 3.2144268, z: 3.2144268}
   m_Children: []
   m_Father: {fileID: 0}
@@ -861,6 +846,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1876183909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8814761495321275255, guid: c1c7bb5da1a1d1b4e90eb6c1a0e62610, type: 3}
+  m_PrefabInstance: {fileID: 167020996}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1876183913
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876183909}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2963712196719524513, guid: c1c7bb5da1a1d1b4e90eb6c1a0e62610, type: 3}
 --- !u!1 &2075941506
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,6 +972,7 @@ GameObject:
   - component: {fileID: 2091095221}
   - component: {fileID: 2091095220}
   - component: {fileID: 2091095223}
+  - component: {fileID: 2091095224}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1063,7 +1068,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -1072,3 +1077,17 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &2091095224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091095219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df26dcebdef172439e2f9d3c1782074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: {fileID: 1843350635}
+  focusSpeed: 8
