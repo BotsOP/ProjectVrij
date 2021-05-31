@@ -2866,6 +2866,7 @@ GameObject:
   - component: {fileID: 792221654}
   - component: {fileID: 792221653}
   - component: {fileID: 792221655}
+  - component: {fileID: 792221656}
   m_Layer: 0
   m_Name: Spook
   m_TagString: Untagged
@@ -3070,6 +3071,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &792221656
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792221652}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b36641e6ad11ef499a285d17c92061b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &801670447
 GameObject:
   m_ObjectHideFlags: 0
@@ -4433,10 +4453,10 @@ GameObject:
   - component: {fileID: 1429102476}
   - component: {fileID: 1429102475}
   - component: {fileID: 1429102474}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spook trigger
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4452,6 +4472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc637e0fcd13274e9136e0c905614dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spook: {fileID: 792221652}
+  spookAnimator: {fileID: 792221656}
 --- !u!65 &1429102475
 BoxCollider:
   m_ObjectHideFlags: 0

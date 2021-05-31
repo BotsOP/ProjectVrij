@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SpookHappening : MonoBehaviour
 {
+    public GameObject spook;
+    public Animator spookAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,10 @@ public class SpookHappening : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnTriggerEnter()
+    {
+        spookAnimator.SetBool("IsActive", true);
     }
 }
