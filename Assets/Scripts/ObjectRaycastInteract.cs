@@ -13,10 +13,8 @@ public class ObjectRaycastInteract : MonoBehaviour, IInteractable
     private bool goToTarget;
     private bool goToOriginal;
 
-    private AudioSource audio;
     private void Awake()
     {
-        audio = GetComponent<AudioSource>();
         targetTransform.gameObject.SetActive(false);
         originalPosition = transform.position;
     }
@@ -56,7 +54,6 @@ public class ObjectRaycastInteract : MonoBehaviour, IInteractable
     private IEnumerator GoBackToOriginal()
     {
         yield return new WaitForSeconds(timeRemainOpen);
-        audio.Play();
         goToOriginal = true;
     }
 }
