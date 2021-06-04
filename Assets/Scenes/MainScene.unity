@@ -907,7 +907,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218685051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6600003, y: 1.25, z: 5.0799994}
+  m_LocalPosition: {x: -3.6600003, y: 1.25, z: 5.55}
   m_LocalScale: {x: 1.7224827, y: 4.266934, z: 1.7224827}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1543,7 +1543,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075941506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.73, y: 2.07, z: 5.41}
+  m_LocalPosition: {x: -1.73, y: 2.05, z: 5.41}
   m_LocalScale: {x: 2.2276, y: 2.2276, z: 2.2276}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1562,7 +1562,6 @@ GameObject:
   - component: {fileID: 2091095220}
   - component: {fileID: 2091095223}
   - component: {fileID: 2091095224}
-  - component: {fileID: 2091095225}
   m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1601,7 +1600,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -1681,42 +1680,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volume: {fileID: 1843350635}
   focusSpeed: 8
---- !u!114 &2091095225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091095219}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a879e317c20b0d41a9a56f1a97f4cf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ApplyMethod: 0
-  SampleCount: 1
-  PerPixelNormals: 1
-  Intensity: 1
-  Tint: {r: 0, g: 0, b: 0, a: 1}
-  Radius: 2
-  PowerExponent: 1.8
-  Bias: 0.05
-  Thickness: 1
-  Downsample: 1
-  CacheAware: 1
-  FadeEnabled: 0
-  FadeStart: 100
-  FadeLength: 50
-  FadeToIntensity: 0
-  FadeToTint: {r: 0, g: 0, b: 0, a: 1}
-  FadeToRadius: 2
-  FadeToPowerExponent: 1
-  FadeToThickness: 1
-  BlurEnabled: 1
-  BlurRadius: 3
-  BlurPasses: 1
-  BlurSharpness: 15
-  FilterEnabled: 1
-  FilterDownsample: 1
-  FilterBlending: 0.8
-  FilterResponse: 0.5

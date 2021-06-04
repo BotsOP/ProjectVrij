@@ -41,6 +41,29 @@ MonoBehaviour:
     m_Value: 1
     min: 0
     max: 1
+--- !u!114 &-3759620952259451925
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
+  m_Name: LiftGammaGain
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  lift:
+    m_OverrideState: 1
+    m_Value: {x: 0.9728905, y: 0.984778, z: 1, w: 0}
+  gamma:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0.18965517}
+  gain:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0.1724138}
 --- !u!114 &-1135196606607677397
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -98,6 +121,7 @@ MonoBehaviour:
   - {fileID: 486002811518464131}
   - {fileID: -6183323687191375309}
   - {fileID: 3438067834652459493}
+  - {fileID: -3759620952259451925}
 --- !u!114 &486002811518464131
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -114,7 +138,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   temperature:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 13
     min: -100
     max: 100
   tint:
