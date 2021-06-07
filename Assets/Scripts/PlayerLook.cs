@@ -6,17 +6,19 @@ public class PlayerLook : MonoBehaviour
 {
     [SerializeField] float mouseSensitivity = 3.5f;
     [SerializeField] [Range(0.0f, 0.5f)] float mouseSmoothTime = 0.03f;
-    [SerializeField] Transform playerCamera;
+    public Transform playerCamera;
     float cameraPitch = 0;
     Vector2 currentMouseDelta;
     Vector2 currentmouseDeltaVelocity;
+    public bool wokeUp;
 
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update() {
-        MouseLook();
+        if(wokeUp)
+            MouseLook();
     }
 
     void MouseLook() {
