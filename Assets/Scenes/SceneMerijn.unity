@@ -11576,7 +11576,7 @@ GameObject:
   - component: {fileID: 1922477116}
   - component: {fileID: 1922477119}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Main Camera Van Mij
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
