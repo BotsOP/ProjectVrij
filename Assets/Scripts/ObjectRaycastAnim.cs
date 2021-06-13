@@ -13,4 +13,9 @@ public class ObjectRaycastAnim : MonoBehaviour, IInteractable
         open = !open;
         animator.SetBool("DoorOpen", open);
     }
+
+    public string displayText()
+    {
+        return null;
+    }
 }

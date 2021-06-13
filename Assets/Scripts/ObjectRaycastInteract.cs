@@ -56,4 +56,9 @@ public class ObjectRaycastInteract : MonoBehaviour, IInteractable
         yield return new WaitForSeconds(timeRemainOpen);
         goToOriginal = true;
     }
+
+    public string displayText()
+    {
+        return null;
+    }
 }

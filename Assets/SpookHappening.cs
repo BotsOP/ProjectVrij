@@ -6,21 +6,11 @@ public class SpookHappening : MonoBehaviour
 {
     public GameObject spook;
     public Animator spookAnimator;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public AudioSource radio1;
 
     void OnTriggerEnter()
     {
+        radio1.Play();
         spookAnimator.SetBool("IsActive", true);
     }
 }
