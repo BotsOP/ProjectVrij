@@ -21,9 +21,6 @@ public class WakeUp : MonoBehaviour
     {
         if(doneWakingUp)
         {
-            Debug.Log("Setting localpos");
-            // transform.position = new Vector3(0, 0.8f, 0);
-            // transform.localPosition = new Vector3(0, 0.8f, 0);
             return;
         }
             
@@ -32,7 +29,6 @@ public class WakeUp : MonoBehaviour
         {
             GameObject _player = Instantiate(player, spawnpoint.position, Quaternion.Euler(0, 231, 0));
             transform.SetParent(_player.transform);
-            Debug.Log("Setting localpos");
             transform.localPosition = new Vector3(0, 0.8f, 0);
             doneWakingUp = true;
             _player.GetComponent<PlayerLook>().wokeUp = true;
