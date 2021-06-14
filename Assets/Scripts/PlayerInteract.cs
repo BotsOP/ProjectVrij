@@ -6,7 +6,7 @@ using TMPro;
 
 public class PlayerInteract : MonoBehaviour
 {
-    public TMP_Text interactText;
+    //public TMP_Text interactText;
     private Camera mainCamera;
     bool displayingText;
     void Start()
@@ -23,8 +23,8 @@ public class PlayerInteract : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 5f, mask)) {
             if(!displayingText)
             {
-                interactText.gameObject.SetActive(true);
-                interactText.text = "Press E to " + hit.transform.gameObject.GetComponent<IInteractable>().displayText();
+                //interactText.gameObject.SetActive(true);
+                //interactText.text = "Press E to " + hit.transform.gameObject.GetComponent<IInteractable>().displayText();
                 displayingText = true;
             }
             
@@ -37,7 +37,7 @@ public class PlayerInteract : MonoBehaviour
         {
             if(displayingText)
             {
-                interactText.gameObject.SetActive(false);
+                //interactText.gameObject.SetActive(false);
                 displayingText = false;
             }
         }
