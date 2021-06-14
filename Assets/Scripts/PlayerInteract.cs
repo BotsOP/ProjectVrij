@@ -11,6 +11,8 @@ public class PlayerInteract : MonoBehaviour
     bool displayingText;
     void Start()
     {
+        interactText = GameObject.FindGameObjectWithTag("InteractText").GetComponent<TMP_Text>();
+        interactText.gameObject.SetActive(false);
         mainCamera = Camera.main;
     }
 
