@@ -12,6 +12,7 @@ public class toothbrush : MonoBehaviour, IInteractable
         gameObject.layer = 0;
         Destroy(gameObject, 4.1f);
         GoblinAnimator.SetBool("IsActive", true);
+        FindObjectOfType<ToDoList>().NextTask();
         StartCoroutine("BrushingTeeth");
     }
     public string displayText()
@@ -21,9 +22,8 @@ public class toothbrush : MonoBehaviour, IInteractable
 
     private IEnumerator BrushingTeeth()
     {
-        Debug.Log("test");
         yield return new WaitForSeconds(1f);
-        Debug.Log("test2");
+        FindObjectOfType<ToDoList>().NextTask();
         toothbrushText.SetActive(true);
         yield return new WaitForSeconds(3f);
         toothbrushText.SetActive(false);

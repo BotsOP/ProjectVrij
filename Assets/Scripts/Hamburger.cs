@@ -11,6 +11,7 @@ public class Hamburger : MonoBehaviour, IInteractable
     {
         radio1.Stop();
         radio2.Play();
+        FindObjectOfType<ToDoList>().NextTask();
         Destroy(gameObject);
     }
     public string displayText()

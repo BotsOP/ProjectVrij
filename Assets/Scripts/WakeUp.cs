@@ -17,7 +17,7 @@ public class WakeUp : MonoBehaviour
         volume.profile.TryGet<Vignette>(out vignette);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(doneWakingUp)
         {
@@ -35,7 +35,7 @@ public class WakeUp : MonoBehaviour
             _player.GetComponent<PlayerLook>().playerCamera = transform;
         }
 
-        vigValue -= 0.001f;
+        vigValue -= 0.003f;
         vignette.intensity.value = vigValue;
         
     }
