@@ -12,7 +12,11 @@ public class Hamburger : MonoBehaviour, IInteractable
         radio1.Stop();
         radio2.Play();
         FindObjectOfType<ToDoList>().NextTask();
-        Destroy(gameObject);
+        GetComponent<AudioSource>().Play();
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
     }
     public string displayText()
     {
