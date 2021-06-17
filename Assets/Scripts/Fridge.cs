@@ -12,6 +12,8 @@ public class Fridge : MonoBehaviour, IInteractable
         Hamburger.SetActive(true);
         PlayerAnimator.SetBool("IsActive", true);
         FindObjectOfType<ToDoList>().NextTask();
+        gameObject.layer = 0;
+        Destroy(this);
     }
     public string displayText()
     {
