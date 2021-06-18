@@ -8,6 +8,7 @@ using UnityEngine.Rendering.Universal;
 public class toothbrush : MonoBehaviour, IInteractable
 {
     public Volume volume;
+    public float darkeningSpeed = 0.015f;
     public GameObject toothbrushText;
     public string _displayText;
     public Animator GoblinAnimator;
@@ -37,7 +38,7 @@ public class toothbrush : MonoBehaviour, IInteractable
         Debug.Log(hasBrushedTeeth);
         if (hasBrushedTeeth)
         {
-            exposureValue -= 0.015f;
+            exposureValue -= darkeningSpeed;
             colorAdjustments.postExposure.value = exposureValue;
             if (colorAdjustments.postExposure.value <= -3.25f)
             {
