@@ -18,6 +18,7 @@ public class Hamburger : MonoBehaviour, IInteractable
         {
             Destroy(transform.GetChild(i).gameObject);
         }
+        gameObject.layer = 0;
     }
     private void Update()
     {

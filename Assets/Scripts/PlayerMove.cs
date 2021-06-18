@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
-    [SerializeField] float speed = 6;
+    public float speed = 6;
     [SerializeField] float gravity = -13;
     [SerializeField] private AudioClip[] footSteps;
     [SerializeField] private AudioSource audioSource;
@@ -21,7 +21,6 @@ public class PlayerMove : MonoBehaviour
         Vector2 targetDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         if (targetDir.x != 0 && !stepping || targetDir.y != 0 && !stepping)
         {
-            Debug.Log("step");
             StartCoroutine("FootSteps");
         }
 

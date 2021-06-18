@@ -11,14 +11,17 @@ public class toothbrush : MonoBehaviour, IInteractable
     public float darkeningSpeed = 0.015f;
     public GameObject toothbrushText;
     public string _displayText;
+    public AudioSource creepySound;
     public Animator GoblinAnimator;
     private bool hasBrushedTeeth;
     private ColorAdjustments colorAdjustments;
     private float exposureValue;
+    private PlayerMove player;
     
     void Start()
     {
         volume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
+        player = FindObjectOfType<PlayerMove>();
     }
     
     public void Interact()
@@ -35,15 +38,18 @@ public class toothbrush : MonoBehaviour, IInteractable
 
     private void FixedUpdate()
     {
-        Debug.Log(hasBrushedTeeth);
         if (hasBrushedTeeth)
         {
             exposureValue -= darkeningSpeed;
             colorAdjustments.postExposure.value = exposureValue;
-            if (colorAdjustments.postExposure.value <= -3.25f)
+            if (colorAdjustments.postExposure.value <= -2.25f)
             {
                 hasBrushedTeeth = false;
             }
+        }
+        if (player.speed >= 3 && hasBrushedTeeth)
+        {
+            player.speed -= 0.03f;
         }
     }
 
@@ -64,6 +70,7 @@ public class toothbrush : MonoBehaviour, IInteractable
         GetComponent<AudioSource>().Stop();
         FindObjectOfType<ToDoList>().NextTask();
         toothbrushText.SetActive(true);
+        creepySound.Play();
         yield return new WaitForSeconds(3f);
         toothbrushText.SetActive(false);
         transform.GetChild(0).gameObject.SetActive(false);

@@ -7,22 +7,19 @@ using TMPro;
 public class PlayerInteract : MonoBehaviour
 {
     public TMP_Text interactText;
-    private Camera mainCamera;
+    public Camera mainCamera;
     bool displayingText;
     void Start()
     {
-        interactText = GameObject.FindGameObjectWithTag("InteractText").GetComponent<TMP_Text>();
-        interactText.gameObject.SetActive(false);
-        mainCamera = Camera.main;
+        mainCamera = GetComponent<Camera>();
     }
 
     void Update()
     {
         RaycastHit hit;
         LayerMask mask = LayerMask.GetMask("interactable");
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
     
-        if (Physics.Raycast(ray, out hit, 5f, mask)) {
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward,out hit, 5f, mask)) {
             if(!displayingText)
             {
                 interactText.gameObject.SetActive(true);

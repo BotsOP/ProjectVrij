@@ -23,9 +23,9 @@ public class PlayerLook : MonoBehaviour
 
     void MouseLook() {
         Vector2 targetMouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        currentMouseDelta = Vector2.SmoothDamp(currentMouseDelta, targetMouseDelta, ref currentmouseDeltaVelocity, mouseSmoothTime);
-
-
+        //currentMouseDelta = Vector2.SmoothDamp(currentMouseDelta, targetMouseDelta, ref currentmouseDeltaVelocity, mouseSmoothTime);
+        currentMouseDelta = targetMouseDelta;
+        
         cameraPitch -= currentMouseDelta.y * mouseSensitivity;
         cameraPitch = Mathf.Clamp(cameraPitch, -90, 90);
         playerCamera.localEulerAngles = Vector3.right * cameraPitch;

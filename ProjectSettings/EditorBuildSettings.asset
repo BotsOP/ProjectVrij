@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/SceneMerijn.unity
+    guid: 72bc37f7cdb3bf94da79e047f9fef435
   m_configObjects: {}
