@@ -15,6 +15,7 @@ public class ConfettiMaker : MonoBehaviour
             FindObjectOfType<ToDoList>().NextTask();
             Confetti.Play();
             GetComponent<AudioSource>().Play();
+            FindObjectOfType<toothbrush>().ResetExposure();
             Destroy(this);
         }
     }

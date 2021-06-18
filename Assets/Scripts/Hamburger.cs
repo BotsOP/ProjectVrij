@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +6,24 @@ using UnityEngine;
 public class Hamburger : MonoBehaviour, IInteractable
 {
     public string _displayText;
-    public AudioSource radio1;
-    public AudioSource radio2;
+    public Transform radio;
+    public Transform newRadio;
+    private bool hasEaten;
     public void Interact()
     {
-        radio1.Stop();
-        radio2.Play();
+        hasEaten = true;
         FindObjectOfType<ToDoList>().NextTask();
         GetComponent<AudioSource>().Play();
         for (int i = 0; i < transform.childCount; i++)
         {
             Destroy(transform.GetChild(i).gameObject);
+        }
+    }
+    private void Update()
+    {
+        if (hasEaten)
+        {
+            radio.position = Vector3.Lerp(radio.position, newRadio.position, Time.deltaTime);
         }
     }
     public string displayText()
