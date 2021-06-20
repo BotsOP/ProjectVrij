@@ -11,9 +11,33 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private float timeBetweenFootSteps;
     public bool stepping;
+    private GameObject pauseMenu;
+    [HideInInspector] public bool pauseMenuOn;
     float velocityY;
 
     void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pauseMenu == null)
+                pauseMenu = FindObjectOfType<MenuManager>().transform.GetChild(0).gameObject;
+
+            if (pauseMenuOn)
+            {
+                pauseMenu.SetActive(false);
+                pauseMenuOn = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                pauseMenu.SetActive(true);
+                pauseMenuOn = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
+
+        if (pauseMenuOn)
+            return;
+        
         HandleMovement();
     }
 

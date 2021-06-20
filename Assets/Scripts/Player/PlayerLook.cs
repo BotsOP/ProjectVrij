@@ -11,12 +11,18 @@ public class PlayerLook : MonoBehaviour
     Vector2 currentMouseDelta;
     Vector2 currentmouseDeltaVelocity;
     public bool wokeUp;
+    private PlayerMove player;
 
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
+        player = GetComponent<PlayerMove>();
     }
 
-    void Update() {
+    void Update()
+    {
+        if (player.pauseMenuOn)
+            return;
+        
         if(wokeUp)
             MouseLook();
     }

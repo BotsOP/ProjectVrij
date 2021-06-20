@@ -18,8 +18,9 @@ public class PlayerInteract : MonoBehaviour
     {
         RaycastHit hit;
         LayerMask mask = LayerMask.GetMask("interactable");
+        
     
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward,out hit, 5f, mask)) {
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5f, mask)) {
             if(!displayingText)
             {
                 interactText.gameObject.SetActive(true);
