@@ -12,15 +12,18 @@ public class Hamburger : MonoBehaviour, IInteractable
     private bool hasEaten;
     public void Interact()
     {
-        wall.SetActive(false);
-        hasEaten = true;
-        FindObjectOfType<ToDoList>().NextTask();
-        GetComponent<AudioSource>().Play();
-        for (int i = 0; i < transform.childCount; i++)
+        if (!hasEaten)
         {
-            Destroy(transform.GetChild(i).gameObject);
+            wall.SetActive(false);
+            hasEaten = true;
+            FindObjectOfType<ToDoList>().NextTask();
+            GetComponent<AudioSource>().Play();
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
+            gameObject.layer = 0;
         }
-        gameObject.layer = 0;
     }
     private void Update()
     {
