@@ -8,9 +8,11 @@ public class Hamburger : MonoBehaviour, IInteractable
     public string _displayText;
     public Transform radio;
     public Transform newRadio;
+    public GameObject wall;
     private bool hasEaten;
     public void Interact()
     {
+        wall.SetActive(false);
         hasEaten = true;
         FindObjectOfType<ToDoList>().NextTask();
         GetComponent<AudioSource>().Play();

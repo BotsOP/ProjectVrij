@@ -11004,6 +11004,7 @@ MonoBehaviour:
   _displayText: eat hamburger
   radio: {fileID: 610549433}
   newRadio: {fileID: 1779839455}
+  wall: {fileID: 1925000348}
 --- !u!65 &1198490037
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13353,7 +13354,6 @@ GameObject:
   - component: {fileID: 1429102476}
   - component: {fileID: 1429102475}
   - component: {fileID: 1429102474}
-  - component: {fileID: 1429102479}
   - component: {fileID: 1429102480}
   - component: {fileID: 1429102481}
   m_Layer: 2
@@ -13454,20 +13454,6 @@ Transform:
   m_Father: {fileID: 1482875995}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1429102479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1429102473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c08c3be35019bd945845b1bb1697e939, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventcubeplis: {fileID: 1925000348}
-  tada: {fileID: 1925000353}
 --- !u!114 &1429102480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19027,7 +19013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59b6a55140ce5d74ab7dae8068dbf37f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1170970068873931921, guid: 59b6a55140ce5d74ab7dae8068dbf37f, type: 3}
       propertyPath: m_Materials.Array.data[0]

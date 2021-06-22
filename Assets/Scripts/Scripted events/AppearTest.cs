@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AppearTest : MonoBehaviour
 {
-
     public GameObject eventcubeplis;
     public Animator tada;
 
