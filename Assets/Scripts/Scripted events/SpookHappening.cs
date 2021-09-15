@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class SpookHappening : MonoBehaviour
 {
-    public GameObject spook;
-    public Animator spookAnimator;
-    public AudioSource radio1;
-
     void OnTriggerEnter()
     {
-        radio1.Play();
-        spookAnimator.SetBool("IsActive", true);
+        EventSystem.RaiseEvent(EventType.ENTER_LIVINGROOM, null);
+        
         Destroy(this);
     }
 }
