@@ -8,8 +8,7 @@ public class BathroomTrigger : MonoBehaviour
     public GameObject toothbrush;
     private void OnTriggerEnter(Collider other)
     {
-        toothbrush.SetActive(true);
-        FindObjectOfType<ToDoList>().NextTask();
+        EventSystem.RaiseEvent(EventType.NEXT_TASK);
         Destroy(this);
     }
 }

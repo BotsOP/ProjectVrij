@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
-    public float speed = 6;
+    [SerializeField] float speed = 6;
     [SerializeField] float gravity = -13;
     [SerializeField] private AudioClip[] footSteps;
     [SerializeField] private AudioSource audioSource;
@@ -14,6 +16,11 @@ public class PlayerMove : MonoBehaviour
     private GameObject pauseMenu;
     [HideInInspector] public bool pauseMenuOn;
     float velocityY;
+
+    private void Start()
+    {
+        EventSystem<float>.Subscribe(EventType.CHANGE_PLAYER_SPEED, SetSpeed);
+    }
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -56,6 +63,11 @@ public class PlayerMove : MonoBehaviour
 
         Vector3 movement = (transform.forward * targetDir.y + transform.right * targetDir.x) * speed + Vector3.up * velocityY;
         controller.Move(movement * Time.deltaTime);
+    }
+
+    private void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
     }
 
     private IEnumerator FootSteps()

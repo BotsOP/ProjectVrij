@@ -5,31 +5,39 @@ using UnityEngine;
 
 public class Hamburger : MonoBehaviour, IInteractable
 {
-    public string _displayText;
-    public Transform radio;
-    public Transform newRadio;
-    public GameObject wall;
+    [SerializeField] private string _displayText;
+    [SerializeField] private MeshRenderer[] hamburgerRend;
     private bool hasEaten;
+
+    private void Start()
+    {
+        EventSystem<int>.Subscribe(EventType.TASK_NUMBER, ActivateHamburger);
+    }
     public void Interact()
     {
         if (!hasEaten)
         {
-            wall.SetActive(false);
             hasEaten = true;
-            FindObjectOfType<ToDoList>().NextTask();
+            EventSystem.RaiseEvent(EventType.NEXT_TASK);
             GetComponent<AudioSource>().Play();
-            for (int i = 0; i < transform.childCount; i++)
+            
+            foreach (var rend in hamburgerRend)
             {
-                Destroy(transform.GetChild(i).gameObject);
+                rend.enabled = false;
             }
+            
             gameObject.layer = 0;
         }
     }
-    private void Update()
+    private void ActivateHamburger(int taskNumber)
     {
-        if (hasEaten)
+        Debug.Log(taskNumber);
+        if (taskNumber == 1)
         {
-            radio.position = Vector3.Lerp(radio.position, newRadio.position, Time.deltaTime);
+            foreach (var rend in hamburgerRend)
+            {
+                rend.enabled = true;
+            }
         }
     }
     public string displayText()

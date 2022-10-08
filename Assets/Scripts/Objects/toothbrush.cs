@@ -11,8 +11,9 @@ public class toothbrush : MonoBehaviour, IInteractable
     public float darkeningSpeed = 0.015f;
     public GameObject toothbrushText;
     public string _displayText;
-    public AudioSource creepySound;
     public Animator GoblinAnimator;
+    [SerializeField] private MeshRenderer[] rends;
+    
     private bool hasBrushedTeeth;
     private ColorAdjustments colorAdjustments;
     private float exposureValue;
@@ -20,19 +21,33 @@ public class toothbrush : MonoBehaviour, IInteractable
     
     void Start()
     {
+        EventSystem<int>.Subscribe(EventType.TASK_NUMBER, ActivateToothBrush);
         volume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
-        player = FindObjectOfType<PlayerMove>();
     }
     
     public void Interact()
     {
         if (!hasBrushedTeeth)
         {
+            player = FindObjectOfType<PlayerMove>();
             gameObject.layer = 0;
             GoblinAnimator.SetBool("IsActive", true);
-            FindObjectOfType<ToDoList>().NextTask();
+            EventSystem.RaiseEvent(EventType.NEXT_TASK);
             StartCoroutine("BrushingTeeth");
+            EventSystem<float>.RaiseEvent(EventType.CHANGE_PLAYER_SPEED, 3f);
             hasBrushedTeeth = true;
+        }
+    }
+
+    private void ActivateToothBrush(int taskNumber)
+    {
+        if (taskNumber == 4)
+        {
+            GetComponent<BoxCollider>().enabled = true;
+            foreach (MeshRenderer rend in rends)
+            {
+                rend.enabled = true;
+            }
         }
     }
 
@@ -46,10 +61,6 @@ public class toothbrush : MonoBehaviour, IInteractable
             {
                 hasBrushedTeeth = false;
             }
-        }
-        if (player.speed >= 3 && hasBrushedTeeth)
-        {
-            player.speed -= 0.03f;
         }
     }
 
@@ -68,12 +79,16 @@ public class toothbrush : MonoBehaviour, IInteractable
         GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(1f);
         GetComponent<AudioSource>().Stop();
-        FindObjectOfType<ToDoList>().NextTask();
+        
+        EventSystem.RaiseEvent(EventType.NEXT_TASK);
+        
         toothbrushText.SetActive(true);
-        creepySound.Play();
         yield return new WaitForSeconds(3f);
         toothbrushText.SetActive(false);
-        transform.GetChild(0).gameObject.SetActive(false);
-        transform.GetChild(1).gameObject.SetActive(false);
+        
+        foreach (MeshRenderer rend in rends)
+        {
+            rend.enabled = false;
+        }
     }
 }

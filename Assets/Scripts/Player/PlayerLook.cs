@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     [SerializeField] float mouseSensitivity = 3.5f;
-    [SerializeField] [Range(0.0f, 0.5f)] float mouseSmoothTime = 0.03f;
     public Transform playerCamera;
     float cameraPitch = 0;
     Vector2 currentMouseDelta;

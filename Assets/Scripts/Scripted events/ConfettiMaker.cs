@@ -1,26 +1,41 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class ConfettiMaker : MonoBehaviour
 {
-    public Animator GoblinThing;
     public ParticleSystem Confetti;
-    public AudioSource radio;
-    public AudioSource creepySound;
+    public Volume volume;
+    
+    private ColorAdjustments colorAdjustments;
 
-    void OnTriggerEnter()
+    private void Start()
     {
-       if(GoblinThing.GetBool("IsActive"))
+        EventSystem<int>.Subscribe(EventType.TASK_NUMBER, ActivateCollider);
+        volume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
+    }
+
+    private void ActivateCollider(int taskNumber)
+    {
+        if (taskNumber == 5)
         {
-            FindObjectOfType<ToDoList>().NextTask();
-            Confetti.Play();
-            GetComponent<AudioSource>().Play();
-            FindObjectOfType<toothbrush>().ResetExposure();
-            radio.Stop();
-            creepySound.Stop();
-            FindObjectOfType<PlayerMove>().speed = 6;
-            Destroy(this);
+            GetComponent<BoxCollider>().enabled = true;
         }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        EventSystem.RaiseEvent(EventType.NEXT_TASK);
+        EventSystem.RaiseEvent(EventType.PARTY);
+
+        Confetti.Play();
+        GetComponent<AudioSource>().Play();
+        colorAdjustments.postExposure.value = 0;
+        EventSystem<float>.RaiseEvent(EventType.CHANGE_PLAYER_SPEED, 6f);
+       
+        Destroy(this);
     }
 }
