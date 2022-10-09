@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Alarm : MonoBehaviour
 {
-    public AudioClip alarmSound;
-    public AudioClip alarmSmack;
-    public AudioSource alarm;
+    [SerializeField] private AudioClip alarmSound;
+    [SerializeField] private AudioClip alarmSmack;
+    [SerializeField] private AudioSource alarm;
     private void Start()
     {
         StartCoroutine("AlarmSounds");

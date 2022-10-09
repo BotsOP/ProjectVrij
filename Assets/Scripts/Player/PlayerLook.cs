@@ -4,37 +4,32 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    [SerializeField] float mouseSensitivity = 3.5f;
+    [SerializeField] private float mouseSensitivity = 3.5f;
     public Transform playerCamera;
-    float cameraPitch = 0;
-    Vector2 currentMouseDelta;
-    Vector2 currentmouseDeltaVelocity;
-    public bool wokeUp;
-    private PlayerMove player;
+    private float cameraPitch = 0;
+    private Vector2 currentMouseDelta;
+    private Vector2 currentmouseDeltaVelocity;
 
-    void Start() {
+    private void Start() {
         Cursor.lockState = CursorLockMode.Locked;
-        player = GetComponent<PlayerMove>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (player.pauseMenuOn)
-            return;
-        
-        if(wokeUp)
+        if (!MenuManager.Instance.pauseMenuOn)
+        {
             MouseLook();
+        }
     }
 
-    void MouseLook() {
+    private void MouseLook() {
         Vector2 targetMouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        //currentMouseDelta = Vector2.SmoothDamp(currentMouseDelta, targetMouseDelta, ref currentmouseDeltaVelocity, mouseSmoothTime);
         currentMouseDelta = targetMouseDelta;
         
         cameraPitch -= currentMouseDelta.y * mouseSensitivity;
         cameraPitch = Mathf.Clamp(cameraPitch, -90, 90);
         playerCamera.localEulerAngles = Vector3.right * cameraPitch;
 
-        transform.Rotate(Vector3.up * currentMouseDelta.x * mouseSensitivity);
+        transform.Rotate(Vector3.up * (currentMouseDelta.x * mouseSensitivity));
     }
 }

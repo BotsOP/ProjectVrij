@@ -6,39 +6,36 @@ using TMPro;
 
 public class PlayerInteract : MonoBehaviour
 {
-    public TMP_Text interactText;
-    public Camera mainCamera;
-    bool displayingText;
-    void Start()
-    {
-        mainCamera = GetComponent<Camera>();
-    }
+    [SerializeField] private TMP_Text interactText;
+    private bool displayingText;
 
-    void Update()
+    private void Update()
     {
-        RaycastHit hit;
-        LayerMask mask = LayerMask.GetMask("interactable");
-        
-    
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5f, mask)) {
-            if(!displayingText)
-            {
-                interactText.gameObject.SetActive(true);
-                interactText.text = "Press E to " + hit.transform.gameObject.GetComponent<IInteractable>().displayText();
-                displayingText = true;
-            }
-            
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                hit.transform.gameObject.GetComponent<IInteractable>().Interact();
-            }
-        }
-        else
+        if (!MenuManager.Instance.pauseMenuOn)
         {
-            if(displayingText)
+            RaycastHit hit;
+            LayerMask mask = LayerMask.GetMask("interactable");
+
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5f, mask)) {
+                if(!displayingText)
+                {
+                    interactText.gameObject.SetActive(true);
+                    interactText.text = "Press " + InputManager.Instance.interactKey + " to " + hit.transform.gameObject.GetComponent<IInteractable>().displayText();
+                    displayingText = true;
+                }
+            
+                if (Input.GetKeyDown(InputManager.Instance.interactKey))
+                {
+                    hit.transform.gameObject.GetComponent<IInteractable>().Interact();
+                }
+            }
+            else
             {
-                interactText.gameObject.SetActive(false);
-                displayingText = false;
+                if(displayingText)
+                {
+                    interactText.gameObject.SetActive(false);
+                    displayingText = false;
+                }
             }
         }
     }

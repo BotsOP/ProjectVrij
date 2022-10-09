@@ -7,31 +7,27 @@ using UnityEngine.Rendering.Universal;
 
 public class toothbrush : MonoBehaviour, IInteractable
 {
-    public Volume volume;
-    public float darkeningSpeed = 0.015f;
-    public GameObject toothbrushText;
-    public string _displayText;
-    public Animator GoblinAnimator;
+    [SerializeField] private Volume volume;
+    [SerializeField] private float darkeningSpeed = 0.015f;
+    [SerializeField] private GameObject toothbrushText;
+    [SerializeField] private string _displayText;
     [SerializeField] private MeshRenderer[] rends;
     
     private bool hasBrushedTeeth;
     private ColorAdjustments colorAdjustments;
     private float exposureValue;
-    private PlayerMove player;
     
-    void Start()
+    private void Start()
     {
         EventSystem<int>.Subscribe(EventType.TASK_NUMBER, ActivateToothBrush);
-        volume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
+        volume.profile.TryGet(out colorAdjustments);
     }
     
     public void Interact()
     {
         if (!hasBrushedTeeth)
         {
-            player = FindObjectOfType<PlayerMove>();
             gameObject.layer = 0;
-            GoblinAnimator.SetBool("IsActive", true);
             EventSystem.RaiseEvent(EventType.NEXT_TASK);
             StartCoroutine("BrushingTeeth");
             EventSystem<float>.RaiseEvent(EventType.CHANGE_PLAYER_SPEED, 3f);
@@ -62,11 +58,6 @@ public class toothbrush : MonoBehaviour, IInteractable
                 hasBrushedTeeth = false;
             }
         }
-    }
-
-    public void ResetExposure()
-    {
-        colorAdjustments.postExposure.value = 0;
     }
 
     public string displayText()

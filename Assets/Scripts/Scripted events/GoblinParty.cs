@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GoblinParty : MonoBehaviour
 {
-    public Animator GoblinAnimator;
+    [SerializeField] private Animator GoblinAnimator;
 
-    void Start()
+    private void Start()
     {
         EventSystem<int>.Subscribe(EventType.TASK_NUMBER, ActivateGoblinParty);
     }

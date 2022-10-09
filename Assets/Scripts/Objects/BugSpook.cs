@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BugSpook : MonoBehaviour
 {
-    public Animator spookAnimator;
+    [SerializeField] private Animator spookAnimator;
 
-    void Start()
+    private void Start()
     {
         EventSystem.Subscribe(EventType.ENTER_LIVINGROOM, StartRadio);
     }

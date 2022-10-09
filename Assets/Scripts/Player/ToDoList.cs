@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ToDoList : MonoBehaviour
 {
-    public GameObject crossingThrough;
-    public GameObject[] toDoList;
+    [SerializeField] private GameObject crossingThrough;
+    [SerializeField] private GameObject[] toDoList;
     private int currentToDoItem;
 
     private void Start()

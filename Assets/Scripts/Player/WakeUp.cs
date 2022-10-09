@@ -6,13 +6,13 @@ using UnityEngine.Rendering.Universal;
 
 public class WakeUp : MonoBehaviour
 {
-    public Volume volume;
-    public GameObject player;
-    public Transform spawnpoint;
+    [SerializeField] private Volume volume;
+    [SerializeField] private GameObject player;
+    [SerializeField] private Transform spawnpoint;
     private Vignette vignette;
     private float vigValue = 0.8f;
     private bool doneWakingUp;
-    void Start()
+    private void Start()
     {
         volume.profile.TryGet<Vignette>(out vignette);
     }
@@ -31,7 +31,6 @@ public class WakeUp : MonoBehaviour
             transform.SetParent(_player.transform);
             transform.localPosition = new Vector3(0, 0.8f, 0);
             doneWakingUp = true;
-            _player.GetComponent<PlayerLook>().wokeUp = true;
             _player.GetComponent<PlayerLook>().playerCamera = transform;
         }
 

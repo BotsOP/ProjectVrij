@@ -10,7 +10,7 @@ public class KitchenCamera : MonoBehaviour
         EventSystem<int>.Subscribe(EventType.TASK_NUMBER, KitchenCutscne);
     }
     
-    void KitchenCutscne(int taskNumber)
+    private void KitchenCutscne(int taskNumber)
     {
         if (taskNumber == 1)
         {

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Toothbrush2 : MonoBehaviour, IInteractable
 {
-    public string _displayText;
-    public Transform sphereSpawnPos;
-    public GameObject fallingDownStairsSphere;
+    [SerializeField] private string _displayText;
+    [SerializeField] private Transform sphereSpawnPos;
+    [SerializeField] private GameObject fallingDownStairsSphere;
     [SerializeField] private MeshRenderer[] rends;
     private bool hasActivated;
 

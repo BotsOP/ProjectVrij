@@ -7,15 +7,15 @@ using UnityEngine.Rendering.Universal;
 
 public class ConfettiMaker : MonoBehaviour
 {
-    public ParticleSystem Confetti;
-    public Volume volume;
+    [SerializeField] private ParticleSystem Confetti;
+    [SerializeField] private Volume volume;
     
     private ColorAdjustments colorAdjustments;
 
     private void Start()
     {
         EventSystem<int>.Subscribe(EventType.TASK_NUMBER, ActivateCollider);
-        volume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
+        volume.profile.TryGet(out colorAdjustments);
     }
 
     private void ActivateCollider(int taskNumber)
@@ -26,7 +26,7 @@ public class ConfettiMaker : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         EventSystem.RaiseEvent(EventType.NEXT_TASK);
         EventSystem.RaiseEvent(EventType.PARTY);

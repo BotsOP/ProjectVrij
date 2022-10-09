@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class BathroomWall : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         EventSystem<int>.Subscribe(EventType.TASK_NUMBER, OpenWall);
     }
 
-    void OpenWall(int taskNumber)
+    private void OpenWall(int taskNumber)
     {
         if (taskNumber == 2)
         {

@@ -6,22 +6,21 @@ using UnityEngine.Rendering.Universal;
 
 public class DynamicDOF : MonoBehaviour
 {
-    public Volume volume;
-    public float focusSpeed;
+    [SerializeField] private Volume volume;
+    [SerializeField] private float focusSpeed;
     DepthOfField dof;
     float distance;
-    void Start()
+    private void Start()
     {
-        volume.profile.TryGet<DepthOfField>(out dof);
+        volume.profile.TryGet(out dof);
     }
 
-    void Update()
+    private void Update()
     {
         RaycastHit hit;
         Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
         
         if (Physics.Raycast(ray, out hit)) {
-            //Transform objectHit = hit.transform;
             distance = Vector3.Distance(transform.position, hit.point);
         }
 

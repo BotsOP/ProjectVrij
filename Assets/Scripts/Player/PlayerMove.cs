@@ -12,44 +12,43 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private AudioClip[] footSteps;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private float timeBetweenFootSteps;
-    public bool stepping;
-    private GameObject pauseMenu;
-    [HideInInspector] public bool pauseMenuOn;
-    float velocityY;
+    [SerializeField] private bool stepping;
+    private float velocityY;
 
     private void Start()
     {
         EventSystem<float>.Subscribe(EventType.CHANGE_PLAYER_SPEED, SetSpeed);
     }
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape))
+    private void Update() {
+        if (!MenuManager.Instance.pauseMenuOn)
         {
-            if (pauseMenu == null)
-                pauseMenu = FindObjectOfType<MenuManager>().transform.GetChild(0).gameObject;
-
-            if (pauseMenuOn)
-            {
-                pauseMenu.SetActive(false);
-                pauseMenuOn = false;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-            else
-            {
-                pauseMenu.SetActive(true);
-                pauseMenuOn = true;
-                Cursor.lockState = CursorLockMode.None;
-            }
+            HandleMovement();
         }
-
-        if (pauseMenuOn)
-            return;
-        
-        HandleMovement();
     }
 
-    void HandleMovement() {
-        Vector2 targetDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+    private void HandleMovement()
+    {
+        float horizontal = 0;
+        float vertical = 0;
+        if (Input.GetKey(InputManager.Instance.forwardKey))
+        {
+            vertical += 1;
+        }
+        if (Input.GetKey(InputManager.Instance.leftKey))
+        {
+            horizontal -= 1;
+        }
+        if (Input.GetKey(InputManager.Instance.rightKey))
+        {
+            horizontal += 1;
+        }
+        if (Input.GetKey(InputManager.Instance.backwardsKey))
+        {
+            vertical -= 1;
+        }
+        
+        Vector2 targetDir = new Vector2(horizontal, vertical);
         if (targetDir.x != 0 && !stepping || targetDir.y != 0 && !stepping)
         {
             StartCoroutine("FootSteps");

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpookTrigger : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         EventSystem.RaiseEvent(EventType.ENTER_LIVINGROOM);
         

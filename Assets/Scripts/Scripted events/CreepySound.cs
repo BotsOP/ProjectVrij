@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreepySound : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
         EventSystem<int>.Subscribe(EventType.TASK_NUMBER, ActivateSound);
         EventSystem.Subscribe(EventType.PARTY, StopSound);
