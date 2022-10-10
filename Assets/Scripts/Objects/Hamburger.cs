@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Hamburger : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string _displayText;
+    [SerializeField] private string displayText;
     [SerializeField] private MeshRenderer[] hamburgerRend;
     private bool hasEaten;
 
@@ -40,8 +40,8 @@ public class Hamburger : MonoBehaviour, IInteractable
             }
         }
     }
-    public string displayText()
+    public string DisplayText()
     {
-        return _displayText;
+        return displayText;
     }
 }

@@ -8,8 +8,8 @@ public class DynamicDOF : MonoBehaviour
 {
     [SerializeField] private Volume volume;
     [SerializeField] private float focusSpeed;
-    DepthOfField dof;
-    float distance;
+    private DepthOfField dof;
+    private float distance;
     private void Start()
     {
         volume.profile.TryGet(out dof);

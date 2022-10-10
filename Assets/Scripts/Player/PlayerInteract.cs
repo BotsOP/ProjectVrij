@@ -20,7 +20,7 @@ public class PlayerInteract : MonoBehaviour
                 if(!displayingText)
                 {
                     interactText.gameObject.SetActive(true);
-                    interactText.text = "Press " + InputManager.Instance.interactKey + " to " + hit.transform.gameObject.GetComponent<IInteractable>().displayText();
+                    interactText.text = "Press " + InputManager.Instance.interactKey + " to " + hit.transform.gameObject.GetComponent<IInteractable>().DisplayText();
                     displayingText = true;
                 }
             

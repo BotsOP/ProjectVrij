@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 
 public class ConfettiMaker : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem Confetti;
+    [SerializeField] private ParticleSystem confetti;
     [SerializeField] private Volume volume;
     
     private ColorAdjustments colorAdjustments;
@@ -31,7 +31,7 @@ public class ConfettiMaker : MonoBehaviour
         EventSystem.RaiseEvent(EventType.NEXT_TASK);
         EventSystem.RaiseEvent(EventType.PARTY);
 
-        Confetti.Play();
+        confetti.Play();
         GetComponent<AudioSource>().Play();
         colorAdjustments.postExposure.value = 0;
         EventSystem<float>.RaiseEvent(EventType.CHANGE_PLAYER_SPEED, 6f);

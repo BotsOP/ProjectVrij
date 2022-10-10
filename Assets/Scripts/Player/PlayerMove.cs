@@ -6,9 +6,9 @@ using Random = UnityEngine.Random;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] CharacterController controller;
-    [SerializeField] float speed = 6;
-    [SerializeField] float gravity = -13;
+    [SerializeField] private CharacterController controller;
+    [SerializeField] private float speed = 6;
+    [SerializeField] private float gravity = -13;
     [SerializeField] private AudioClip[] footSteps;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private float timeBetweenFootSteps;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GoblinParty : MonoBehaviour
 {
-    [SerializeField] private Animator GoblinAnimator;
+    [SerializeField] private Animator goblinAnimator;
 
     private void Start()
     {
@@ -15,7 +15,7 @@ public class GoblinParty : MonoBehaviour
     {
         if (taskNumber == 5)
         {
-            GoblinAnimator.SetBool("IsActive", true);
+            goblinAnimator.SetBool("IsActive", true);
         }
     }
 }

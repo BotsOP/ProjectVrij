@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Toothbrush2 : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string _displayText;
+    [SerializeField] private string displayText;
     [SerializeField] private Transform sphereSpawnPos;
     [SerializeField] private GameObject fallingDownStairsSphere;
     [SerializeField] private MeshRenderer[] rends;
@@ -43,8 +43,8 @@ public class Toothbrush2 : MonoBehaviour, IInteractable
             }
         }
     }
-    public string displayText()
+    public string DisplayText()
     {
-        return _displayText;
+        return displayText;
     }
 }

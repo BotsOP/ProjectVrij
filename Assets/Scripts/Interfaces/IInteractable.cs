@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    public string displayText();
+    public string DisplayText();
     public void Interact();
 }

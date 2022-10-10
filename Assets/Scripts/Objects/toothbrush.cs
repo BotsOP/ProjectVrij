@@ -10,7 +10,7 @@ public class toothbrush : MonoBehaviour, IInteractable
     [SerializeField] private Volume volume;
     [SerializeField] private float darkeningSpeed = 0.015f;
     [SerializeField] private GameObject toothbrushText;
-    [SerializeField] private string _displayText;
+    [SerializeField] private string displayText;
     [SerializeField] private MeshRenderer[] rends;
     
     private bool hasBrushedTeeth;
@@ -60,9 +60,9 @@ public class toothbrush : MonoBehaviour, IInteractable
         }
     }
 
-    public string displayText()
+    public string DisplayText()
     {
-        return _displayText;
+        return displayText;
     }
 
     private IEnumerator BrushingTeeth()

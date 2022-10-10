@@ -20,7 +20,7 @@ public class ToDoList : MonoBehaviour
         toDoList[0].SetActive(true);
     }
 
-    public void NextTask()
+    private void NextTask()
     {
         toDoList[currentToDoItem].GetComponent<Animator>().SetBool("finished", true);
         
