@@ -5,7 +5,7 @@ using UnityEngine;
 public class KitchenCamera : MonoBehaviour
 {
     [SerializeField] private Animator anim;
-    void Start()
+    private void Start()
     {
         EventSystem<int>.Subscribe(EventType.TASK_NUMBER, KitchenCutscne);
     }
